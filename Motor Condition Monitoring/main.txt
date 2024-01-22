@@ -1,0 +1,18 @@
+Motor Condition Monitoring (Motor durumunun izlenmesi) konusu Otomasyon sektöründe önemli bir yeri vardır. Birçok araştırmacı bu konu ile alakalı çalışmalar yapmış ve makaleler yazmıştır. 
+Bu projede bir Servo Motorun Z ekseninde çalışırken ki durumunun incelenmesi ve Çalışma değişkenlerine göre bir Sağlık skoru oluşturma projesidir.
+
+Birçok alt başlıkların yanı sıra GENEL olarak yapı şu şekilde;
+1 - Donanım
+2 - Haberleşme
+3 - Makine Öğrenmesi
+
+DONANIM
+1 - PLC (Ben Festo CPX-E-CEC-M1 kullandım)
+2 - Servo Motor Sürücü (Ben Festo CMMT-AS kullandım)
+3 - Servo Motor (Ben Festo EMMT-AS)
+4 - Eksen
+
+Bu ürünler değişebilir. Sistem çalıştığı sürece başka ürünler ile de yapılabilir.
+
+Gerekli bağlantılar yapıldıktan sonra sistemin bir döngü şeklinde hareketi sağlanmalıdır.
+Festo PLC kullandığım için Codesys programı ile Z ekseninde en üst ve en alt konumlarına gidip gelme yapacak şekilde kodladım.
