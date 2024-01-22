@@ -18,3 +18,5 @@ Gerekli bağlantılar yapıldıktan sonra sistemin bir döngü şeklinde hareket
 Festo PLC kullandığım için Codesys programı ile Z ekseninde en üst ve en alt konumlarına gidip gelme yapacak şekilde kodladım.
 Codesys tarafı CODESYS klasörü altında bulunmaktadır.
 
+
+
