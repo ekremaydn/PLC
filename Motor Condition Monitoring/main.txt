@@ -25,5 +25,19 @@ Codesys tarafından çıkan veriler UaExpert programında ip ve porta bağlantı
 
 Haberleşme tarafı Fotoğraflar klasöründe adım adım detaylı olarak anlatılmıştır.
 
+MAKİNE ÖĞRENMESİ
+Haberleşme tarafı bittikten sonra bir veri kümesi oluşturmamız gerekmektedir. Bunu Codesys üzerinden sürücüden aldığımız Current ve Following Error değerlerini (İsterseniz başka değişkenler de kullanabilirsiniz.) Python sayfama OPC-UA üzerinden çekiyorum. Ve bu verilerle bir veri seti oluşturuyorum.
+Bu veri seti oluşturma kodlarına Python klasörü altında getDataset.ipynb dosyasından erişebilirsiniz.
+
+Veri setini oluşturduktan sonra bu verilerin işlenmesi ve anlık veriler ile test edilmesi aşaması gelmektedir. Bu aşamada matematiksel formüller kullanılarak yapılmaktadır.
+İlk öncelikle gelen verilerden hangilerinin anomali veri olduğunu ayırt etmek için Outlier yöntemlerini kullandım. Sonrasında ise kendi formüllerimle bir Sağlık skoru oluşturdum.
+
+Bu kısmın kodlarına Python klasörü altında motorCondition.ipynb dosyasından erişebilirsiniz.
+Ayrıca oluşturduğum veri setine de Python klasörü altından servoDB excel dosyası üzerinden erişebilirsiniz.
+
+
+
+
+
 
 
