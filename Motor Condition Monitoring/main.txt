@@ -18,5 +18,12 @@ Gerekli bağlantılar yapıldıktan sonra sistemin bir döngü şeklinde hareket
 Festo PLC kullandığım için Codesys programı ile Z ekseninde en üst ve en alt konumlarına gidip gelme yapacak şekilde kodladım.
 Codesys tarafı CODESYS klasörü altında bulunmaktadır.
 
+HABERLEŞME
+Codesys tarafından sonra yapılması gereken bazı konfigürasyonlar vardır. Bunlar Codesys içerisinde Symbol Configuration açmaktır. Burada PLC'den Python ideme göndereceğim verileri seçerek build etmemiz gerekmektedir.
+
+Codesys tarafından çıkan veriler UaExpert programında ip ve porta bağlantısı yapıldıktan sonra karşımıza çıkan verileri ekrana sürükleyerek özellikler bölümünden Node Id lerini çekmemiz gerekmektedir. 
+
+Haberleşme tarafı Fotoğraflar klasöründe adım adım detaylı olarak anlatılmıştır.
+
 
 
