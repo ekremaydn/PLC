@@ -1,0 +1,19 @@
+Bu projede bir pnömatik silindirin Load Cell üzerinde uyguladığı kuvveti ölçen proje yaptım.
+
+Gerekli olan ürünler
+1-Oransal Regülatör
+2-Analog modulü ile bir PLC
+3-Pnömatik silindir
+4-Load Cell
+5-İndikatör
+
+Oransal regülatör 0-10V ya da 4-20mA arasında çalışmaktadır. Benim kullandığım regülatör 0-10V arasında çalışmaktaydı.
+Ana havadan çıkan basıncı oransal regülatörün girişine bağladım. Ve regülatörü PLC üzerinden besleyip referans bitini ise Analog modulüne bağladım. 
+Bu sayede PLC üzerinden regülatör üzerinden kaç bar basınç çıkacağının kontrolünü sağlamış oluyorum. Örneğin 6 bar ana basıncım var. Referans bitine 3V
+gönderdiğim zaman çıkış basıncım 3 bar oluyor. Regülatörün görevi verilen voltaj değerine göre basıncı oransallamış oluyor.
+
+Regülatörden çıkan hava ise silindirime gidiyor. Bu silindir bir mekanizma ile sabit tutulup bir plakayı sıkıştırma görevi görüyor.
+Bu plaka içerisinde ise load cell bulunmakta ve plaka sıkışırken load cell üzerinde bir yük oluşmaktadır. Bu yükü ise indikatör aracılığı ile gözlemlemiş
+oluyorum.
+
+PLC kodlarını Codesys uzantılı dosya içerisinden erişebilirsiniz. Sistemin genel görüntüsü ise fotoğraflar bölümünde mevcuttur.
