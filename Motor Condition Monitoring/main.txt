@@ -35,8 +35,19 @@ Veri setini oluşturduktan sonra bu verilerin işlenmesi ve anlık veriler ile t
 Bu kısmın kodlarına Python klasörü altında motorCondition.ipynb dosyasından erişebilirsiniz.
 Ayrıca oluşturduğum veri setine de Python klasörü altından servoDB excel dosyası üzerinden erişebilirsiniz.
 
+Oluşturduğumuz sistemin testi için öncelikle motorun boş bir şekilde çalıştırarak başlıyoruz. Bu boş çalışma anında Sağlık skorumuzun 100 olduğunu gözlemliyoruz. Ve sonrasında dışarıdan bir etken olarak eksen üzerine plakalar koyarak motorun çalışma şartlarını zorlaştırıyoruz. Ve sağlık skorunun değiştiğini gözlemleyebiliyoruz.
 
-
+GELİŞTİRİLMESİ GEREKEN ŞEYLER
+İlk öncelikle kullanılmak istenilen değişkenler değişebilir. Bunlar şu şekilde olması sistemi daha iyileştireceğini düşünüyorum.
+1-Titreşim sıklığı
+2-Titreşim yoğunluğu
+3-Sıcaklık
+4-Akım
+5-Following Error 
+Bu değişkenler üzerinden methodlar kullanılması sistemin iyileşmesini sağlayabilir.
+Ayrıca sistemin eğitilirken toplanan verilerin ürünlerin datasheet üzerinde ki nominal çalışma şartlarına göre eğitilirse, sağlık skoru ölçümünde başarının artacağını düşünüyorum.
+Ve sonrası için çalışma şartlarının neyden kaynaklandığına dair bir sınıflandırma (classification) yapılarak error message şeklinde kullanıcıya geri dönüş sağlanabilir.
+Üzerinde daha fazla çalışarak daha iyisi yapılabilecek bir konu olduğunu düşünüyorum. Sonuçlarıma Fotoğraflar klasörü altından erişebilirsiniz.
 
 
 
