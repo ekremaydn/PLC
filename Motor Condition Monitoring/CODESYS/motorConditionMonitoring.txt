@@ -1,0 +1,103 @@
+PROGRAM PLC_PRG
+VAR
+	gCurrent 		AT%IW12 : INT;
+	gFollowingError AT%ID5  : DINT;
+	gPosition 		AT%ID1 : DINT;
+	
+	iCurrent 	    : INT;
+	iFollowingError : DINT;
+	HealthScore : INT;
+	tonWait : TON;
+	
+	counter : INT := 0;
+	iState  : INT := 0;
+	fb		: fb_motion;
+END_VAR
+
+************************
+
+
+fb(
+	bPowerEnable:= , 
+	bResetExecute:= , 
+	bHomeExecute:= , 
+	iPos:= , 
+	iVel:= , 
+	iAcc:= , 
+	iDecc:= , 
+	iJerk:= , 
+	bMABSExecute:= , 
+	bPowerDone=> , 
+	bResetDone=> , 
+	bHomeDone=> , 
+	bMABSDone=> );
+	
+tonWait(IN:=, PT:=T#250MS, Q=>, ET=>);
+
+CASE iState OF
+	0:IF fb.bResetExecute THEN
+		fb.bPowerEnable := TRUE;
+		iState := 5;
+	END_IF
+	5:tonWait.IN := TRUE;
+	IF tonWait.Q THEN
+		tonWait.IN := FALSE;
+		iState := 10;
+	END_IF
+	10: IF fb.bPowerDone THEN
+		fb.bHomeExecute := TRUE;
+		iState := 15;
+	END_IF
+	15:tonWait.IN := TRUE;
+	IF tonWait.Q THEN
+		tonWait.IN := FALSE;
+		iState := 20;
+	END_IF
+	20:IF fb.bHomeDone THEN
+		fb.bHomeExecute := FALSE;
+		fb.bResetExecute:= FALSE;
+		iState := 25;
+	END_IF
+	25:counter := counter + 1;
+	   fb.iPos := 450;
+	   fb.iVel := 500;
+	   fb.iAcc := 1000;
+	   fb.iDecc:= 1000;
+	   fb.iJerk:= 10000;
+	   iState  := 30;
+	30:fb.bMABSExecute := TRUE;
+	IF gPosition < 44700 THEN
+		iCurrent := gCurrent;
+	END_IF
+	IF fb.bMABSDone THEN
+		iFollowingError := gFollowingError;
+		fb.bMABSExecute := FALSE;
+		iState := 35;
+	END_IF
+	35:tonWait.IN := TRUE;
+	IF tonWait.Q THEN
+		tonWait.IN := FALSE;
+		iState := 40;
+	END_IF
+	40:fb.iPos := 0;
+	   fb.iVel := 500;
+	   fb.iAcc := 1000;
+	   fb.iDecc:= 1000;
+       fb.iJerk:= 10000;
+	   iState  := 45;
+	45:fb.bMABSExecute := TRUE;
+	IF fb.bMABSDone THEN
+		fb.bMABSExecute := FALSE;
+		iState := 50;
+	END_IF
+	50:tonWait.IN := TRUE;
+	IF tonWait.Q THEN
+		tonWait.IN := FALSE;
+		IF counter > 500 THEN
+			iState := 100;
+		ELSE
+			iState := 25;
+		END_IF		
+	END_IF
+END_CASE
+
