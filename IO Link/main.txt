@@ -1,0 +1,11 @@
+Bu projede IO Link ile Festo ürünü olan EPCE nin sürülmesini yaptım.
+
+Epce ürünü sürebilmek için öncelikle anlık değerlerin okunması gerekmektedir. Bu değerler anlık pozisyon değeri, tork değeri gibi değerler olabilir.
+Pozisyon değeri readParameter bloğu ile okunduktan sonra gelen değerin düzgün bir değer olabilmesi için kod içerisinde de görüldüğü üzere byte dönüşümü yapılmıştır. 
+Byte dönüşümü yapılmadan gerçek değere ulaşılmamaktadır. Bu byte dönüşümü şu şekildedir.
+
+Bir Double Word değişkeninin ilk iki bytelarının ve son iki bytelarının yer değiştirilmesi ile düzgün değer elde edilmektedir.
+
+Pozisyon değeri okunduktan ve dönüştürüldüten sonra writeParameter bloğu ile yeni değer yazdırılır. Yine yeni değerin yazdırılması için değişkenin bytelarının aynı şekilde dönüştürülmesi gerekmektedir.
+Sonrasında hareket vererek istenilen pozisyona gönderilmesi mümkündür. Kod içerisinde fonksiyon ve program şeklinde iki parçada yapılmıştır. 
+Proje ile alakalı fotoğraflara ve kullanılan ürünlere fotoğraflar klasörü altından erişebilirsiniz.
