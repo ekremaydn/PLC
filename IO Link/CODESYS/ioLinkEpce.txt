@@ -1,0 +1,50 @@
+FUNCTION Swap_to_Swap : REAL
+VAR_INPUT
+	rVariable : REAL;
+	bState : INT;
+END_VAR
+VAR
+	diVariable AT %MD1 : DINT;
+	rVariable_2 AT %MD4 : REAL;
+	rVariable_1 : REAL;
+	dwVariable : DWORD;
+	pVariable  : POINTER TO REAL;
+	
+	InByte_1, InByte_2, InByte_3, InByte_4 : BYTE;
+END_VAR
+
+*************************
+
+
+pVariable := ADR(dwVariable);
+pVariable^:= rVariable;
+
+InByte_1 := DWORD_TO_BYTE(dwVariable);
+InByte_2 := DWORD_TO_BYTE(SHR(dwVariable, 8));
+InByte_3 := DWORD_TO_BYTE(SHR(dwVariable, 16));
+InByte_4 := DWORD_TO_BYTE(SHR(dwVariable, 24));
+
+IF bState = 2 THEN
+	%MB16 := InByte_4;
+	%MB17 := InByte_3;
+	%MB18 := InByte_2;
+	%MB19 := InByte_1;
+	
+ELSE
+	%MB4 := InByte_4;
+	%MB5 := InByte_3;
+	%MB6 := InByte_2;
+	%MB7 := InByte_1;
+END_IF
+
+
+
+IF bState = 0 THEN
+	rVariable_1 := ((TO_REAL(diVariable)) / 100);
+	Swap_to_Swap := rVariable_1;
+ELSIF bState = 1 THEN
+	rVariable_1 := (TO_REAL(diVariable));
+	Swap_to_Swap := rVariable_1;
+ELSIF bState = 2 THEN
+	Swap_to_Swap := rVariable_2;
+END_IF
